@@ -6,20 +6,14 @@
 
 @font-face {
   font-family: 'Trebuchet MS';
-  /* src: url('../fonts/TrebuchetMS/TrebuchetMS.woff'); */
-  src: local('Trebuchet MS'), local('TrebuchetMS'),
-      url('../fonts/TrebuchetMS/TrebuchetMS.woff') format('woff'),
-      url('../fonts/TrebuchetMS/TrebuchetMS.ttf') format('ttf');
+  src: url('../fonts/TrebuchetMS/TrebuchetMS.woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Trebuchet MS';
-  /* src: url('../fonts/TrebuchetMS/TrebuchetMS-Bold.woff'); */
-  src: local('Trebuchet MS Bold'), local('TrebuchetMS-Bold'),
-      url('../fonts/TrebuchetMS/TrebuchetMS-Bold.woff') format('woff'),
-      url('../fonts/TrebuchetMS/TrebuchetMS-Bold.ttf') format('ttf');
+  src: url('../fonts/TrebuchetMS/TrebuchetMS-Bold.woff');
   font-weight: bold;
   font-style: normal;
 }
@@ -27,8 +21,6 @@
 @font-face {
   font-family: 'Exo2.0';
   src: url('../fonts/exotwo/Exo2.0-Thin.otf');
-  /* src: local('Exo2.0'), local('Exo 2.0'),
-      url('../fonts/Exo20/exo2_0_light.otf') format('otf'); */
   font-weight: 100;
   font-style: normal;
 }
@@ -64,10 +56,6 @@ body:before {
   max-width: 640px;
   padding: 20px 15px;
   margin: 0 auto;
-
-}
-
-.products {
 }
 
 .products__title {
@@ -84,7 +72,7 @@ body:before {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
 }
 
 .products__cards .card:nth-child(n+2) {
@@ -94,6 +82,7 @@ body:before {
 .card {
   width: 320px;
   clip-path: polygon(43px 0, 100% 0, 100% 100%, 0 100%, 0 43px);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   user-select: none;
 }
 
@@ -105,14 +94,10 @@ body:before {
   position: relative;
 }
 
-
 .card__content {
   padding: 17px 10px 10px 51px;
-  /* padding-left: 51px; */
   height: 472px;
-  /* padding-top: 17px; */
   border-radius: 12px;
-  /* position: relative; */
   background: url('../img/Cate.png') no-repeat center, linear-gradient(135deg, transparent 29px, #F2F2F2 0) top left;
 }
 
@@ -138,7 +123,6 @@ body:before {
   text-align: left;
   font-weight: 700;
   font-size: 24px;
-  /* line-height: 28px; */
   color: #000000;
   margin-bottom: 15px;  
 }
@@ -146,6 +130,7 @@ body:before {
 .card__options {
   font-weight: 400;
   font-size: 14px;
+  line-height: 16px;
   color: #666666;
 }
 
@@ -185,11 +170,12 @@ body:before {
 
 /* footer */
 .card__footer {
-  padding-top: 14px;
-  font-weight: 400;
   font-size: 13px;
+  font-weight: 400;
+  line-height: 1.2;
   color: #FFFFFF;
   text-align: center;
+  padding: 14px 2px 0;
 }
 
 .card__button_buy {
@@ -204,47 +190,6 @@ body:before {
   cursor: pointer;
   border-bottom: 1px dashed #22A7E9;
 }
-
-
-/** Tablet */
-
-@media (min-width: 768px) {
-
-  .container {
-    max-width: 1100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
-
-  .products {
-  }
-
-  .products__cards .card:nth-child(n+2) {
-    margin-left: 80px;
-    margin-top: 0;
-  }
-
-  .products__cards .card:nth-child(n+3) {
-    margin-top: 40px;
-  }  
-}
-
-
-
-/** Desktop */
-
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1300px;
-  }
-
-  .products__cards .card:nth-child(n+3) {
-    margin-top: 0;
-  }
-}
-
 
 /* Выбор */
 .card[data-selected="true"] .card__content_wrapper {
@@ -270,22 +215,50 @@ body:before {
   color: #B3B3B3;
 }
 
-/* .card[data-selected="disable"] .card__subtitle {
-  color: #B3B3B3;
-}
-
-.card[data-selected="disable"] .card__title {
-  color: #B3B3B3;
-}
-
-.card[data-selected="disable"] .card__options {
-  color: #B3B3B3;
-} */
-
 .card[data-selected="disable"] .card__weight {
   background-color: #B3B3B3;
 }
 
 .card[data-selected="disable"] .card__footer {
   color: #FFFF66;
+}
+
+
+/** Tablet */
+
+@media (min-width: 768px) {
+
+  .container {
+    max-width: 1100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .products__cards .card:nth-child(n+2) {
+    margin-left: 80px;
+    margin-top: 0;
+  }
+
+  .products__cards .card:nth-child(n+3) {
+    margin-top: 40px;
+  }  
+}
+
+
+/** Desktop */
+
+@media (min-width: 1200px) {
+
+  body {
+    background-image: url('../img/Pattern@2x.jpg');
+  }
+  .container {
+    max-width: 1300px;
+  }
+
+  .products__cards .card:nth-child(n+3) {
+    margin-top: 0;
+  }
 }

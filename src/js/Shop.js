@@ -1,12 +1,12 @@
 /* eslint-disable object-curly-newline */
-import uuid from 'uuid';
+import { v4 } from 'uuid';
 
 export default class Shop {
   constructor(container) {
     this.container = container;
     this.products = [
       {
-        id: 1,
+        id: v4(),
         subTitle: 'Сказочное заморское яство',
         title: 'Нямушка',
         taste: ' с фуа-гра',
@@ -21,7 +21,7 @@ export default class Shop {
         },
       },
       {
-        id: 2,
+        id: v4(),
         subTitle: 'Сказочное заморское яство',
         title: 'Нямушка',
         taste: ' с рыбой',
@@ -36,7 +36,7 @@ export default class Shop {
         },
       },
       {
-        id: 3,
+        id: v4(),
         subTitle: 'Сказочное заморское яство',
         title: 'Нямушка',
         taste: ' с курой',
@@ -53,6 +53,9 @@ export default class Shop {
     ];
   }
 
+  /**
+   * Инициализирует страницу
+   */
   init() {
     this.renderCards();
     this.registerListener();
@@ -68,6 +71,9 @@ export default class Shop {
     });
   }
 
+  /**
+   * Устанавливаем обработчики событий
+   */
   registerListener() {
     this.container.querySelectorAll('.card').forEach((card) => {
       const cardEl = card.querySelector('.card__content_wrapper');
@@ -99,7 +105,9 @@ export default class Shop {
     if (!productData.available) return; // Если элемент недоступен выходим
 
     if (productData.selected.status) {
-      element.querySelector('.card__info').textContent = productData.subTitle;
+      const subTitle = element.querySelector('.card__info');
+      subTitle.textContent = productData.subTitle;
+      subTitle.classList.remove('card__info-pink');
       element.querySelector('.card__footer-message').innerHTML = `
       Чего сидишь порадуй котэ,<button class="card__button_buy">купи.</button>`;
     } else {
@@ -150,7 +158,7 @@ export default class Shop {
    * Получает данные продукта по id
    */
   getProduct(id) {
-    return this.products.find((item) => item.id === +id);
+    return this.products.find((item) => item.id === id);
   }
 
   /**
@@ -189,10 +197,9 @@ export default class Shop {
 
     const cardOptions = document.createElement('ul');
     cardOptions.classList.add('card__options');
+    // Добавляем элементы списка опций
     options.forEach((item) => {
-      const li = document.createElement('li');
-      li.textContent = item;
-      cardOptions.append(li);
+      cardOptions.append(this.getOptionsEl(item));
     });
     cardContent.append(cardOptions);
     // Card weight
@@ -231,5 +238,24 @@ export default class Shop {
     card.append(cardFooter);
 
     return card;
+  }
+
+  /**
+   * СОздает элемент списка опций
+   * @param {*} text - текст опции с карточки
+   * @returns html элемент
+   */
+  static getOptionsEl(text) {
+    const li = document.createElement('li');
+    const number = Number.parseInt(text, 10);
+    if (number) {
+      const strong = document.createElement('strong');
+      li.textContent = (text.slice(number.toString().length));
+      strong.textContent = number;
+      li.prepend(strong);
+    } else {
+      li.innerText = text;
+    }
+    return li;
   }
 }
