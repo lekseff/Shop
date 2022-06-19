@@ -1,6 +1,6 @@
-/*!*********************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/css/style.css ***!
-  \*********************************************************************/
+/*!*******************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./src/css/style.css ***!
+  \*******************************************************************************************************************************************/
 * {
   padding: 0;
   margin: 0;
@@ -84,9 +84,13 @@ body:before {
 
 .card {
   width: 320px;
-  clip-path: polygon(43px 0, 100% 0, 100% 100%, 0 100%, 0 43px);
+  -webkit-clip-path: polygon(43px 0, 100% 0, 100% 100%, 0 100%, 0 43px);
+          clip-path: polygon(43px 0, 100% 0, 100% 100%, 0 100%, 0 43px);
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .card__content_wrapper {
@@ -154,7 +158,10 @@ body:before {
   background-color: #1698D9;
   border-radius: 50%;
   overflow: hidden; 
-  user-select: none;
+  -webkit-user-select: none; 
+     -moz-user-select: none; 
+      -ms-user-select: none; 
+          user-select: none;
 }
 
 .card__weight_value {
@@ -266,5 +273,3 @@ body:before {
   }
 }
 
-
-/*# sourceMappingURL=main.e9035c9430535dcda429.css.map*/
