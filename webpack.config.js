@@ -20,7 +20,7 @@ module.exports = {
     //   ? 'images/[hash][ext][query]'
     //   : 'images/[hash][ext][query]',
   },
-  devtool: 'source-map',
+  // devtool: 'source-map',
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name].[hash].css',
@@ -52,6 +52,21 @@ module.exports = {
           // (mode === 'development') ? 'style-loader' : MiniCssExtractPlugin.loader,
           MiniCssExtractPlugin.loader,
           'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  [
+                    'postcss-preset-env',
+                    {
+                      // Options
+                    },
+                  ],
+                ],
+              },
+            },
+          },
         ],
       },
       {
