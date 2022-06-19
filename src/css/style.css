@@ -42,6 +42,7 @@ body {
   font-family: 'Trebuchet MS';
   font-weight: normal;
   font-style: normal;
+  line-height: 1;
   background-image: url('../img/Pattern.jpg');
 }
 
@@ -93,6 +94,7 @@ body:before {
 .card {
   width: 320px;
   clip-path: polygon(43px 0, 100% 0, 100% 100%, 0 100%, 0 43px);
+  user-select: none;
 }
 
 .card__content_wrapper {
@@ -105,15 +107,13 @@ body:before {
 
 
 .card__content {
-  padding-left: 51px;
+  padding: 17px 10px 10px 51px;
+  /* padding-left: 51px; */
   height: 472px;
-  padding-top: 17px;
+  /* padding-top: 17px; */
   border-radius: 12px;
   /* position: relative; */
-  background: url('../img/Cate.png'), linear-gradient(135deg, transparent 29px, #F2F2F2 0) top left;
-}
-
-.card__content {
+  background: url('../img/Cate.png') no-repeat center, linear-gradient(135deg, transparent 29px, #F2F2F2 0) top left;
 }
 
 .card__info {
@@ -123,14 +123,18 @@ body:before {
   margin-bottom: 5px;
 }
 
-.card__title {
-  font-weight: 700;
-  font-size: 48px;
-  line-height: 56px;
-  color: #000000;
+.card__info-pink {
+  color: #E62E7A;
 }
 
-.card__subtitle {
+.card__title {
+  font-size: 48px;
+  font-weight: 700;  
+  color: #000000;
+  margin-bottom: 4px;
+}
+
+.card__taste {
   text-align: left;
   font-weight: 700;
   font-size: 24px;
@@ -242,13 +246,46 @@ body:before {
 }
 
 
-
 /* Выбор */
 .card[data-selected="true"] .card__content_wrapper {
-  background-color: red;
+  background-color: #D91667;
 }
 
 .card[data-selected="true"] .card__weight {
-  background-color: red;
+  background-color: #D91667;
 }
 
+
+/* Недоступно */
+.card[data-selected="disable"] .card__content_wrapper {
+  background-color:  #B3B3B3;
+}
+
+.card[data-selected="disable"] .card__content {
+  color: #B3B3B3;
+  opacity: 0.5;
+}
+
+.card[data-selected="disable"] .card__content * {
+  color: #B3B3B3;
+}
+
+/* .card[data-selected="disable"] .card__subtitle {
+  color: #B3B3B3;
+}
+
+.card[data-selected="disable"] .card__title {
+  color: #B3B3B3;
+}
+
+.card[data-selected="disable"] .card__options {
+  color: #B3B3B3;
+} */
+
+.card[data-selected="disable"] .card__weight {
+  background-color: #B3B3B3;
+}
+
+.card[data-selected="disable"] .card__footer {
+  color: #FFFF66;
+}
